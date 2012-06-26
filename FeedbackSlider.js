@@ -1,8 +1,6 @@
 (function() {
-
-	var FeedbackSlider = Ext.define('Ext.ux.FeedbackSlider', {
+	var FeedbackSliderBase = Ext.define('Ext.ux.FeedbackSliderBase', {
 		extend      : 'Ext.slider.Slider',
-		xtype       : 'feedback-slider',
 		initialize  : function() {
 			this.callParent();
 			this.on({
@@ -16,9 +14,6 @@
 			this.callParent(arguments);
 			this.setHelperValue(value);
 		},
-		setHelperValue  : function(value) {
-			this.feedbackElement.dom.innerHTML = value;
-		},
 		getElementConfig: function() {
 			return {
 				reference : 'element',
@@ -28,11 +23,7 @@
 						reference : 'helper',
 						tag       : 'div',
 						cls       : Ext.baseCSSPrefix + 'slider-helper',
-						children  : [{
-							reference : 'feedbackElement',
-							tag       : 'div',
-							cls       : Ext.baseCSSPrefix + 'slider-helper-input'
-						}]
+            children  : [ this.getFeedbackElement() ]
 					},
 					{
 						reference : 'innerElement',
@@ -42,18 +33,60 @@
 			};
 		},
 		config  : {
-			cls : Ext.baseCSSPrefix + 'feedback-slider'
+			cls : Ext.baseCSSPrefix + 'feedback-slider',
 		}
 	});
+
+  var FeedbackSlider = Ext.define('Ext.ux.FeedbackSlider', {
+		extend              : 'Ext.ux.FeedbackSliderBase',
+    xtype               : 'feedback-slider',
+    setHelperValue      : function(value) {
+      this.feedbackElement.dom.innerHTML = value;
+    },
+    getFeedbackElement  : function() {
+      return {
+        reference : 'feedbackElement',
+        tag       : 'div',
+        cls       : Ext.baseCSSPrefix + 'slider-helper-input'
+      }
+    }
+  });
+
+  var TwoWayFeedbackSlider = Ext.define('Ext.ux.TwoWayFeedbackSlider', {
+		extend              : 'Ext.ux.FeedbackSliderBase',
+    xtype               : 'twoway-feedback-slider',
+    setHelperValue      : function(value) {
+      this.feedbackElement.dom.value = value;
+    },
+    getFeedbackElement  : function() {
+      return {
+        reference : 'feedbackElement',
+        tag       : 'input',
+        type      : 'number',
+        cls       : Ext.baseCSSPrefix + 'slider-helper-input'
+      }
+    }
+  });
 
 	Ext.define('Ext.ux.FeedbackSliderField', {
 		extend          : 'Ext.field.Slider',
 		xtype           : 'feedback-slider-field',
 		applyComponent  : function(config) {
-			return Ext.factory(config, FeedbackSlider)
+      return Ext.factory(config, FeedbackSlider);
 		},
 		config  : {
-			cls : Ext.baseCSSPrefix + 'feedback-slider-field'
+			cls: Ext.baseCSSPrefix + 'feedback-slider-field',
+		}
+	});
+
+	Ext.define('Ext.ux.TwoWayFeedbackSliderField', {
+		extend          : 'Ext.field.Slider',
+		xtype           : 'twoway-feedback-slider-field',
+		applyComponent  : function(config) {
+      return Ext.factory(config, TwoWayFeedbackSlider);
+		},
+		config  : {
+			cls: Ext.baseCSSPrefix + 'feedback-slider-field',
 		}
 	});
 
