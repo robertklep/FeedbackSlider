@@ -18,4 +18,6 @@ added feedback textfield positioned right next to the slider.
 Howto
 -----
 
-See `test.html` for an example on how to use.
+See test.html for an example on how to use. This assumes that you have
+a symlink called `touch`, pointing to your local Sencha Touch 2 SDK, in
+the same directory as test.html and the JS/CSS files.
