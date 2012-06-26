@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta 	http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link 	rel="stylesheet" href="touch/resources/css/sencha-touch.css">
+  <link 	rel="stylesheet" href="FeedbackSlider.css">
+	<script src="touch/sencha-touch-all-debug.js"></script>
+	<script src="FeedbackSlider.js"></script>
+	<script>
+		Ext.setup({
+			onReady : function() {
+
+        Ext.Viewport.add({
+          xtype   : 'container',
+          layout  : 'fit',
+          items   : [{
+            xtype : 'formpanel',
+            id    : 'my-formpanel',
+            items : [
+              {
+                xtype       : 'feedback-slider-field',
+                name        : 'my-slider',
+                label       : 'Slide me!',
+                minValue    : 0,
+                maxValue    : 100,
+                value       : 30
+              },
+              {
+                xtype       : 'button',
+                text        : 'Click to console.log slider value',
+                listeners   : {
+                  tap : function() {
+                    console.log('Slider value:', Ext.getCmp('my-formpanel').getValues()['my-slider']);
+                  }
+                }
+              },
+              {
+                xtype       : 'button',
+                text        : 'Click to set slider value to 42',
+                listeners   : {
+                  tap : function() {
+                    Ext.getCmp('my-formpanel').setValues({ 'my-slider' : 42 });
+                  }
+                }
+              }
+            ]
+          }]
+        });
+			}
+		});
+	</script>
+</head>
+<body></body>
+</html>
