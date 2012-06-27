@@ -7,17 +7,21 @@ with textual feedback.
 Introduction
 ------------
 
-This extension introduces two new Sencha Touch components:
-`Ext.ux.FeedbackSlider` (_xtype: feedback-slider_) and
-`Ext.ux.FeedbackSliderField` (_xtype: feedback-slider-field_).
+This extension introduces four new Sencha Touch components:
+* `Ext.ux.FeedbackSlider` (_xtype: feedback-slider_)
+* `Ext.ux.TwoWayFeedbackSlider` (_xtype: twoway-feedback-slider_)
+* `Ext.ux.FeedbackSliderField` (_xtype: feedback-slider-field_)
+* `Ext.ux.TwoWayFeedbackSliderField` (_xtype: twoway-feedback-slider-field_)
 
 These should be drop-in replacements for respectively `Ext.slider.Slider`
 (_xtype: slider_) and `Ext.field.Slider` (_xtype: sliderfield_), with an
-added feedback textfield positioned right next to the slider.
+added feedback text field positioned right next to the slider.
+
+The `twoway` versions use an input field instead of a static text field, so
+you can either use the slider to change the value, or use the input field.
 
 Howto
 -----
 
-See test.html for an example on how to use. This assumes that you have
-a symlink called `touch`, pointing to your local Sencha Touch 2 SDK, in
-the same directory as test.html and the JS/CSS files.
+See test.html for an example on how to use. This assumes that the CSS/JS
+files are in the same directory.
