@@ -3,6 +3,10 @@
   position      : relative;
 }
 
+.x-feedback-slider-two-way {
+  margin-right  : 5em;
+}
+
 .x-feedback-slider-field .x-component-outer {
 	padding	: 0.5em;
 }
@@ -20,6 +24,10 @@
   position    : absolute;
   left        : 100%;
 	margin-left	: 1em;
+}
+
+.x-feedback-slider-two-way .x-slider-helper {
+  width       : 4em;
 }
 
 .x-feedback-slider .x-slider-helper .x-slider-helper-input {
