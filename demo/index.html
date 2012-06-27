@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta   http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link   rel="stylesheet" href="http://extjs.cachefly.net/touch/sencha-touch-2.0.0/resources/css/sencha-touch.css">
+  <link   rel="stylesheet" href="FeedbackSlider.css">
+  <script src="http://extjs.cachefly.net/touch/sencha-touch-2.0.0/sencha-touch-all-debug.js"></script>
+  <script src="FeedbackSlider.js"></script>
+  <script>
+    Ext.setup({
+      onReady : function() {
+
+        Ext.Viewport.add({
+          xtype   : 'container',
+          layout  : 'fit',
+          modal   : true,
+          width   : 500,
+          height  : 500,
+          centered: true,
+          floating: true,
+          items   : [
+            {
+              xtype : 'formpanel',
+              id    : 'my-formpanel',
+              items : [
+                {
+                  xtype           : 'toolbar',
+                  title           : 'Slider without two way feedback'
+                },
+                {
+                  xtype           : 'feedback-slider-field',
+                  name            : 'my-slider',
+                  minValue        : 0,
+                  maxValue        : 100,
+                  value           : 30
+                },
+                {
+                  xtype       : 'container',
+                  defaults    : {
+                    xtype     : 'button',
+                    flex      : 1,
+                    margin    : 2
+                  },
+                  layout      : {
+                    type      : 'hbox',
+                    align     : 'center'
+                  },
+                  items       : [
+                    {
+                      text        : 'Log value',
+                      listeners   : {
+                        tap : function() {
+                          console.log('Slider value:', Ext.getCmp('my-formpanel').getValues()['my-slider']);
+                        }
+                      }
+                    },
+                    {
+                      text        : 'Set value',
+                      listeners   : {
+                        tap : function() {
+                          Ext.getCmp('my-formpanel').setValues({ 'my-slider' : 42 });
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  xtype           : 'toolbar',
+                  title           : 'Slider with two way feedback',
+                  margin          : '30 0 0 0'
+                },
+                {
+                  xtype           : 'twoway-feedback-slider-field',
+                  name            : 'my-slider-2',
+                  minValue        : 0,
+                  maxValue        : 100,
+                  value           : 60
+                },
+              ]
+            }
+          ]
+        });
+      }
+    });
+  </script>
+</head>
+<body></body>
+</html>
