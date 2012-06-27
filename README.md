@@ -25,3 +25,8 @@ Howto
 
 See test.html for an example on how to use. This assumes that the CSS/JS
 files are in the same directory.
+
+Demo
+----
+
+Here's [a demo](http://robertklep.github.com/FeedbackSlider/demo/).
