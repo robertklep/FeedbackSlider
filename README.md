@@ -23,8 +23,7 @@ you can either use the slider to change the value, or use the input field.
 Howto
 -----
 
-See test.html for an example on how to use. This assumes that the CSS/JS
-files are in the same directory.
+See `test.html` for an example on how to use.
 
 Demo
 ----
