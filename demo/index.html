@@ -29,7 +29,7 @@
                 },
                 {
                   xtype           : 'feedback-slider-field',
-                  name            : 'my-slider',
+                  name            : 'my-oneway-slider',
                   minValue        : 0,
                   maxValue        : 100,
                   value           : 30
@@ -50,7 +50,10 @@
                       text        : 'Log value',
                       listeners   : {
                         tap : function() {
-                          console.log('Slider value:', Ext.getCmp('my-formpanel').getValues()['my-slider']);
+                          console.log('Slider #1 value:',
+                            // parseInt just to circumvent a Webkit bug with console.log
+                            parseInt(Ext.getCmp('my-formpanel').getValues()['my-oneway-slider'])
+                          );
                         }
                       }
                     },
@@ -58,7 +61,7 @@
                       text        : 'Set value',
                       listeners   : {
                         tap : function() {
-                          Ext.getCmp('my-formpanel').setValues({ 'my-slider' : 42 });
+                          Ext.getCmp('my-formpanel').setValues({ 'my-oneway-slider' : 42 });
                         }
                       }
                     }
@@ -71,10 +74,44 @@
                 },
                 {
                   xtype           : 'twoway-feedback-slider-field',
-                  name            : 'my-slider-2',
+                  name            : 'my-twoway-slider',
                   minValue        : 0,
                   maxValue        : 100,
                   value           : 60
+                },
+                {
+                  xtype       : 'container',
+                  defaults    : {
+                    xtype     : 'button',
+                    flex      : 1,
+                    margin    : 2
+                  },
+                  layout      : {
+                    type      : 'hbox',
+                    align     : 'center'
+                  },
+                  items       : [
+                    {
+                      text        : 'Log value',
+                      listeners   : {
+                        tap : function() {
+                          console.log('Slider #2 value:', 
+                            // parseInt just to circumvent a Webkit bug with console.log
+                            parseInt(Ext.getCmp('my-formpanel').getValues()['my-twoway-slider'])
+                          )
+                          ;
+                        }
+                      }
+                    },
+                    {
+                      text        : 'Set value',
+                      listeners   : {
+                        tap : function() {
+                          Ext.getCmp('my-formpanel').setValues({ 'my-twoway-slider' : 42 });
+                        }
+                      }
+                    }
+                  ]
                 },
               ]
             }
